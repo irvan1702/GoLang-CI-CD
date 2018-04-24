@@ -1,5 +1,9 @@
+node{
 ws("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}/"){
     withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"]){
+        stage('Checkout') {
+            checkout scm
+        }
         stage('Pre Test'){
             echo "Pulling Dependencies"
 
@@ -53,4 +57,5 @@ ws("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}/"){
         //         }
         // }
     }
+}
 }
